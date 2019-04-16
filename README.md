@@ -1,4 +1,5 @@
-## Node.js Mocha Test Boilerplate
+
+## String-calculator
 
 #### Installation
 Install local dependencies
@@ -18,5 +19,3 @@ npm test
 ```
 npm run test-dev
 ```
-
-
