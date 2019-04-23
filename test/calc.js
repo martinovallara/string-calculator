@@ -1,6 +1,7 @@
 /*jshint esversion: 6 */
 
 let chai = require('chai');
+var expect = chai.expect;
 let should = chai.should();
 let calc = require('../calculator');
 
@@ -44,4 +45,19 @@ describe('Add Functions', () => {
             res.should.equal(3);
         });
     });
+    describe('negative numbers not allowed ', () => {
+        it('throw exception', () => {
+            sut = function() {calc.sum('//;\n1;-2');};
+            expect(sut).to.throw('negative numbers not allowed: -2');
+        });
+    });
+    /**
+     *    describe('ignore big numbers', () => {
+        it('return sum without bib number', () => {
+            let res = calc.sum('1001,2');
+            res.should.equal(2);
+        });
+    });
+     */
+ 
 });
