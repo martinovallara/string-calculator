@@ -1,20 +1,15 @@
 /*jshint esversion: 6 */
+const { SeparatorParser } = require("./SeparatorParser");
 let add = require("./add");
 
-const parseNumbers = (input, separator) => input.replace('\n', separator).split(separator);
+const parseNumbers = ({parsedInput, separator}) => parsedInput.replace('\n', separator).split(separator);
 
 const sum = (input) => {
-    const patternDelimiter = /\/{2}(.*)\n/;
+    const separatorParser = new SeparatorParser(input)
 
-    let separator = ',';
-    let parsedInput = input;
+    const parseResult = separatorParser.parse()
+    const numbers = parseNumbers(parseResult);
 
-    if (patternDelimiter.test(input)) {
-        separator = input.match(patternDelimiter)[1];
-        parsedInput = input.replace(`//${separator}\n`, '');
-    }
-
-    const numbers = parseNumbers(parsedInput, separator);
     return add(numbers);
 }
 
