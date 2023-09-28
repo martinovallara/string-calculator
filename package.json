@@ -1,5 +1,5 @@
 {
-  "name": "String-Calculator",
+  "name": "string-calculator",
   "version": "1.0.0",
   "description": "string calculator",
   "main": "index.js",

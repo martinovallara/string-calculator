@@ -1,44 +1,21 @@
 /*jshint esversion: 6 */
+let add = require("./add");
 
-function sum(input) {
-    //console.log('input: ' + input);
+const parseNumbers = (input, separator) => input.replace('\n', separator).split(separator);
+
+const sum = (input) => {
+    const patternDelimiter = /\/{2}(.*)\n/;
+
     let separator = ',';
-    const patternDelimiter = /[\/]{2}(.*)\n/;
+    let parsedInput = input;
+
     if (patternDelimiter.test(input)) {
         separator = input.match(patternDelimiter)[1];
-        //console.log('separator: ' + separator);
-        input = input.replace('//' + separator + '\n', '');
-    }
-    return Adder(input, separator);
-
-    function Adder(input, separator) {
-        //console.log('Adder("' + input + '", "' + separator + '")');
-        input = input.replace('\n', separator);
-        if (input == '') return input;
-        const numbers = input.split(separator);
-        if (numbers.some(negative)) {
-            throw new TypeError('negative numbers not allowed: ' + numbers.filter(negative));
-        }
-        result = numbers
-            .map(Number)
-            .reduce(add);
-        return result;
+        parsedInput = input.replace(`//${separator}\n`, '');
     }
 
-
-    function add(acc, curr) {
-        return acc + curr;
-    }
-
-    function notBigNumber(n) {
-        return n > 1000;
-    }
-
-    function negative(n) {
-        return n < 0;
-    }
+    const numbers = parseNumbers(parsedInput, separator);
+    return add(numbers);
 }
 
-module.exports = {
-    sum: sum
-};
+module.exports = { sum }; 

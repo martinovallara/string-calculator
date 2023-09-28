@@ -1,9 +1,9 @@
 /*jshint esversion: 6 */
+const calc = require('../calculator');
 
 let chai = require('chai');
 const { expect } = chai;
 const should = chai.should();
-let calc = require('../calculator');
 
 describe('Add Functions', () => {
     describe('empty input', () => {
