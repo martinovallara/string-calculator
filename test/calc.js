@@ -1,8 +1,8 @@
 /*jshint esversion: 6 */
 
 let chai = require('chai');
-var expect = chai.expect;
-let should = chai.should();
+const { expect } = chai;
+const should = chai.should();
 let calc = require('../calculator');
 
 describe('Add Functions', () => {
@@ -47,7 +47,7 @@ describe('Add Functions', () => {
     });
     describe('negative numbers not allowed ', () => {
         it('throw exception', () => {
-            sut = function() {calc.sum('//;\n1;-2');};
+            const sut = function () { calc.sum('//;\n1;-2'); };
             expect(sut).to.throw('negative numbers not allowed: -2');
         });
     });
@@ -59,5 +59,5 @@ describe('Add Functions', () => {
         });
     });
      */
- 
+
 });
